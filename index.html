@@ -1,0 +1,327 @@
+<%- include('partials/header') %>
+
+
+<div >
+  
+      <div id="ticket">
+        <div class="background">
+          <img src="../back.png" alt="">
+          <svg class="logosvg left">
+            <use href="#logosvg">
+          </svg>
+          <svg class="logosvg right">
+            <use href="#logosvg">
+          </svg>
+        </div>
+        <div class="left">
+          <div class="header">
+            <svg class="logosvg">
+              <use href="#logosvg">
+            </svg>
+            <h1>Ticket</h1>
+          </div>
+          <h2>Farewell Ceremony <span class="year-span"></span></h1>
+            <div class="details">
+              <div class="day"><span class="day-span"></span></div>
+              <div class="date"><span class="fulldate-span"></span></div>
+              <div class="code"><span class="code-span"></span></div>
+              <div class="access">Access</div>
+            </div>
+        </div>
+        <div class="barcode">
+          <div class="barcode-container" title=""></div>
+        </div>
+        <div class="right">
+          <svg class="logosvg">
+            <use href="#logosvg">
+          </svg>
+          <h1>Ticket</h1>
+          <h2>Farewell Ceremony <span class="year-span"></span></h1>
+            <div class="details">
+              <div class="day"><span class="day-span"></span></div>
+              <div class="date"><span class="fulldate-span"></span></div>
+              <div class="code"><span class="code-span"></span></div>
+              <div class="access">Access</div>
+            </div>
+        </div>
+      </div>
+    
+      <!-- inline svg hidden -->
+      <svg style="display: none">
+        <defs>
+          <symbol id="logosvg" viewBox="0 0 400 400">
+            <g id="circles" fill="none" stroke-width="16" stroke-linecap="round" stroke-miterlimit="10">
+              <circle cx="200" cy="200" r="180" stroke-dasharray="50 30 30 30 10 30" />
+              <circle cx="200" cy="200" r="155" stroke-dasharray="30 30 80 30" />
+            </g>
+            <g id="notes" stroke="none">
+              <path d="M208.46,201.7l92.48-18.34v46.07c-17.68-12.89-46.22-1.07-48.89,21.25
+                        c-5.67,47.32,66.49,48.79,62.97,1.67v-0.09V133.67c0-5.02-4.59-8.79-9.51-7.81L200.8,146.61c-3.73,0.74-6.42,4.01-6.42,7.81V257.6
+                        c-18.87-13.62-48.26,0.4-49.21,24c-2.77,40.84,58.76,46.13,63.28,5.97 M178.58,301.45c-22.96,2.22-26.45-32.54-3.61-35.03
+                        C197.94,264.22,201.41,298.95,178.58,301.45z M285.19,273.27c-23.01,2.27-26.51-32.57-3.62-35.03
+                        C304.48,236.09,307.97,270.73,285.19,273.27z M300.94,169.01l-92.48,18.33v-27.89l92.48-18.33V169.01z" />
+              <path d="M160.85,129.1c-7.72-8.47-21.73-16.14-24.14-25.03c-0.84-3.06-3.61-5.19-6.78-5.19
+                        c-4.18-0.39-7.96,2.77-7.93,7.04c0,0,0,96.89,0,96.89c-18.87-13.64-48.29,0.42-49.21,24.03c-2.73,40.82,58.59,45.96,63.1,5.82h0.2
+                        V129.89c1.36-6.05,11.52,6.88,14.81,9.17c7.39,7.38,7.49,16.67,7.3,27.65c-0.07,3.93,3.1,7.16,7.04,7.16
+                        C179.69,173.51,170.55,136.05,160.85,129.1z M102.63,246.66c-22.85-2.44-19.44-37.23,3.55-35.03
+                        C129,214.1,125.57,248.82,102.63,246.66z" />
+            </g>
+          </symbol>
+        </defs>
+      </svg>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Acme&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Libre+Barcode+128&display=swap");
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+
+	background-size: cover;
+	background-position: center center;
+	height: 100vh;
+	display: grid;
+	place-items: center;
+	font-size: min(1.5rem, 2vw);
+}
+/* default logosvg color*/
+.logosvg {
+	fill: black;
+	stroke: black;
+}
+
+#ticket {
+	display: flex;
+	text-transform: uppercase;
+	font-family: sans-serif;
+	font-family: "Acme", sans-serif;
+	background-image: url();
+	position: relative;
+}
+
+#ticket > *:not(.background) {
+	filter: drop-shadow(0.05em 0.05em black);
+}
+#ticket .background {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+  background-image: url(../back.png);
+}
+#ticket .background .logosvg {
+	fill: var(--color);
+	stroke: var(--color);
+	position: absolute;
+  opacity: .3;
+	height: 100%;
+	width: 100%;
+}
+#ticket .background .logosvg.left {
+	--color: rgb(194, 171, 95);
+	top: 0;
+	left: 0;
+	transform: translate(-50%, -50%) scale(3);
+}
+#ticket .background .logosvg.right {
+	--color: rgb(100, 13, 24);
+	bottom: 0;
+	right: 0;
+	transform: translate(50%, 50%) scale(3);
+}
+
+#ticket .left {
+	padding: 1.5em 3em;
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+}
+#ticket .left .header {
+	display: flex;
+	align-items: center;
+	gap: 1em;
+}
+#ticket .left .header .logosvg {
+	height: 4em;
+	width: 4em;
+	fill: white;
+	stroke: white;
+}
+#ticket .left .header h1 {
+  color: rgb(0, 153, 255);
+	font-size: 4em;
+	line-height: 1em;
+}
+#ticket .left h2 {
+	font-size: 1.5em;
+}
+#ticket .left .details {
+	font-size: 1em;
+	display: grid;
+	grid-template-columns: max-content auto max-content;
+	border: 0.05em solid white;
+}
+#ticket .left .details > div {
+	border: 0.05em solid white;
+	padding: 0.2em 0.5em;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#ticket .left .details .code {
+	grid-row: 1/3;
+	grid-column: 3/4;
+	font-size: 2.5em;
+	border: 0.025em solid white;
+}
+#ticket .left .details .access {
+	grid-column: 1/3;
+	font-size: 1.5em;
+}
+
+#ticket .barcode {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 4em;
+	border-right: 0.05em dashed rgb(223, 223, 223);
+}
+
+#ticket .barcode-container {
+	transform: rotate(-90deg);
+	position: relative;
+	line-height: 1em;
+}
+#ticket .barcode-container::after {
+	content: attr(title);
+	font-family: "Libre Barcode 128", cursive;
+	font-size: 3em;
+	position: absolute;
+	bottom: 100%;
+	left: 50%;
+	transform: translateX(-50%);
+}
+#ticket .barcode-container::before {
+	content: attr(title);
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+#ticket .right {
+	padding: 1.5em;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	gap: 0.5em;
+}
+#ticket .right .logosvg {
+	fill: white;
+	stroke: white;
+	height: 3em;
+	width: 3em;
+}
+#ticket .right h1 {
+  color: aliceblue;
+	font-size: 1.5em;
+}
+#ticket .right h2 {
+	font-size: 1em;
+	word-wrap: all;
+	max-width: 8em;
+}
+#ticket .right .details {
+	font-size: 0.8em;
+	display: grid;
+	grid-template-columns: max-content max-content;
+	border: 0.05em solid white;
+}
+#ticket .right .details > div {
+	padding: 0.05em 0.5em;
+	font-size: 1.2em;
+}
+#ticket .right .details > div:nth-child(odd) {
+	border-right: 0.05em solid white;
+}
+
+#ticket .right .details > div:nth-child(-n + 2) {
+	border-bottom: 0.05em solid white;
+	font-size: 0.8em;
+}
+
+    </style>
+  
+    <script>
+      const months = [
+	"january",
+	"februari",
+	"march",
+	"april",
+	"may",
+	"june",
+	"july",
+	"august",
+	"september",
+	"october",
+	"november",
+	"december"
+];
+const days = [
+	"sunday",
+	"monday",
+	"tuesday",
+	"wednessday",
+	"thursday",
+	"friday",
+	"saturday"
+];
+const today = new Date();
+const year = today.getFullYear();
+const date = today.getDate();
+const month = months[today.getMonth()];
+const day = days[today.getDay()].substring(0, 3) + ".";
+const fullDate = `${date} ${month} ${year}`;
+const randomCodeGenerator = () => {
+	const alphabet = "abcdefghijklmnopqrstuvwxyz";
+	const numbers = "123456789";
+	const firstLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
+	const secondLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
+	const number = numbers[Math.floor(Math.random() * numbers.length)];
+	return firstLetter + secondLetter + number;
+};
+const randomCode = randomCodeGenerator();
+
+let yearSpans = document.querySelectorAll(".year-span");
+yearSpans.forEach((yearSpan) => {
+	yearSpan.innerHTML = year;
+});
+let daySpans = document.querySelectorAll(".day-span");
+daySpans.forEach((daySpan) => {
+	daySpan.innerHTML = day;
+});
+let fulldateSpans = document.querySelectorAll(".fulldate-span");
+fulldateSpans.forEach((fulldateSpan) => {
+	fulldateSpan.innerHTML = fullDate;
+});
+let codeSpans = document.querySelectorAll(".code-span");
+codeSpans.forEach((codeSpan) => {
+	codeSpan.innerHTML = randomCode;
+});
+
+let barCodeContainer = document.querySelector(".barcode-container");
+barCodeContainer.title = Math.floor(Math.random() * 1000000000);
+
+    </script>
+  </div>
+</div>
+
+<%- include('partials/footer') %>
